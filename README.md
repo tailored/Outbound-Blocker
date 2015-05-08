@@ -4,5 +4,5 @@ Uses the Windows Firewall API (which is implemented from Windows Vista onwards) 
 Inspiration for this is credited to Rockstar dealing out GTAV multiplayer bans for singleplayer mods
 
 Pre-compiled binary is available [here](https://bitbucket.org/5OClockCharlie/outbound-blocker/downloads/Outbound%20Blocker.exe),
-though I would recommend that you download the zip and look over / compile it yourself, so as to ensure the legitimacy / non-
+though I would recommend that you download the zip and look over / compile it yourself, so as to ensure the legitimacy / non -
 maliciousness of the performed functions.
