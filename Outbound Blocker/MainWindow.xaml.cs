@@ -43,7 +43,7 @@ namespace Yep
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void dialogLauncher_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Executable Files (*.exe)|*.exe";
@@ -72,7 +72,7 @@ namespace Yep
                     firewallRule.InterfaceTypes = "All";
                     firewallRule.Name = blockedEXE;
                     // I opted to use the Windows Firewall API for creating the rule because it allows one to create (unattractively named, though easily identifiable) rules without
-                    // requiring information beyond the location of the program that needs its outbound connection blocked, which is retrieved from the OpenFileDialog
+                    // requiring information beyond the location of the program that needs its outbound connection blocked, which is retrieved from the OpenFileDialog and assigned to blockedEXE
 
                     firewallPolicy.Rules.Add(firewallRule);
                     createdRules = 1;
