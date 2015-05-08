@@ -5,8 +5,8 @@
         Title="Outbound Blocker" Height="148" Width="285" MinWidth="285" MinHeight="148" MaxHeight="148" MaxWidth="282" ResizeMode="CanMinimize" Icon="anti upload.ico">
     <Grid Margin="0,0,-8,-62">
         <Grid Margin="29,20,35,69">
-            <TextBox x:Name="pathBox" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Height="23" VerticalAlignment="Top" Width="188" IsUndoEnabled="False" MaxLines="1" FontFamily="Verdana" TextAlignment="Center" VerticalContentAlignment="Center"/>
-            <Button x:Name="NotTextBox" Content="" HorizontalAlignment="Left" Margin="188,0,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Width="25" Height="23" Click="Button_Click" RenderTransformOrigin="0,8.609"/>
+            <TextBox x:Name="selectedPath" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Height="23" VerticalAlignment="Top" Width="188" IsUndoEnabled="False" MaxLines="1" FontFamily="Verdana" TextAlignment="Center" VerticalContentAlignment="Center"/>
+            <Button x:Name="dialogLauncher" Content="" HorizontalAlignment="Left" Margin="188,0,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Width="25" Height="23" Click="Button_Click" RenderTransformOrigin="0,8.609"/>
             <Button x:Name="blockButton" Content="Block" HorizontalAlignment="Left" Margin="0,59,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.2,-0.85" Click="blockButton_Click"/>
             <Button x:Name="unblockButton" Content="Unblock" HorizontalAlignment="Left" Margin="138,59,0,0" VerticalAlignment="Top" Width="75" Click="unblockButton_Click"/>
         </Grid>

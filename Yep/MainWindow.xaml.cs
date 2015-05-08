@@ -24,7 +24,7 @@ namespace Yep
     /// </summary>
     public partial class MainWindow : Window
     {
-        int dank = 0;
+        int createdRules = 0;
         string blockedEXE;
         private void deleteRule()
         {
@@ -35,6 +35,8 @@ namespace Yep
             p.StartInfo.RedirectStandardOutput = true;
             p.StartInfo.CreateNoWindow = true;
             p.Start();
+            // I opted to use netsh for the deletion of the rule because it allows for deletion of rules with simply their names, which the program controls
+            //(and I failed to find documentation regarding the deletion of rules with the Windows Firewall API)
         }
         public MainWindow()
         {
@@ -46,7 +48,7 @@ namespace Yep
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Executable Files (*.exe)|*.exe";
             if (openFileDialog.ShowDialog() == true)
-                pathBox.Text = openFileDialog.FileName;
+                selectedPath.Text = openFileDialog.FileName;
             blockedEXE = openFileDialog.FileName;
         }
 
@@ -54,7 +56,7 @@ namespace Yep
         {
             if (string.IsNullOrEmpty(blockedEXE) != true)
             {
-                if (dank == 0)
+                if (createdRules == 0)
                 {
                     INetFwPolicy2 firewallPolicy = (INetFwPolicy2)Activator.CreateInstance(
                         Type.GetTypeFromProgID("HNetCfg.FwPolicy2"));
@@ -69,9 +71,11 @@ namespace Yep
                     firewallRule.Enabled = true;
                     firewallRule.InterfaceTypes = "All";
                     firewallRule.Name = blockedEXE;
+                    // I opted to use the Windows Firewall API for creating the rule because it allows one to create (unattractively named, though easily identifiable) rules without
+                    // requiring information beyond the location of the program that needs its outbound connection blocked, which is retrieved from the OpenFileDialog
 
                     firewallPolicy.Rules.Add(firewallRule);
-                    dank = 1;
+                    createdRules = 1;
                 }
 
             }
@@ -80,7 +84,7 @@ namespace Yep
         private void unblockButton_Click(object sender, RoutedEventArgs e)
         {
             deleteRule();
-            dank = 0;
+            createdRules = 0;
         }
     }
 }
